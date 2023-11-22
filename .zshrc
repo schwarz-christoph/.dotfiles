@@ -147,6 +147,9 @@ alias kubectl-show-ns='kubectl api-resources --verbs=list --namespaced -o name |
 # Funny fun:
 alias fucking='sudo '
 
+# LS
+alias lsa='ls -lah'
+
 if command -v thefuck 1>/dev/null 2>&1; then
   eval $(thefuck --alias)
 fi
