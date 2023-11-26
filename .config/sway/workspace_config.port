@@ -1,7 +1,6 @@
 # workspace config
 
 set $output-primary eDP-1
-set $output-secondary HDMI-A-0 DP-1 DP-2
 
 # the last output is picked if detected
 workspace 1 output $output-primary
@@ -15,13 +14,13 @@ workspace 8 output $output-primary
 workspace 9 output $output-primary
 workspace 10 output $output-primary
 
-workspace 11 output $output-secondary
-workspace 12 output $output-secondary
-workspace 13 output $output-secondary
-workspace 14 output $output-secondary
-workspace 15 output $output-secondary
-workspace 16 output $output-secondary
-workspace 17 output $output-secondary
-workspace 18 output $output-secondary
-workspace 19 output $output-secondary
-workspace 20 output $output-secondary
+workspace 11 output $output-primary
+workspace 12 output $output-primary
+workspace 13 output $output-primary
+workspace 14 output $output-primary
+workspace 15 output $output-primary
+workspace 16 output $output-primary
+workspace 17 output $output-primary
+workspace 18 output $output-primary
+workspace 19 output $output-primary
+workspace 20 output $output-primary

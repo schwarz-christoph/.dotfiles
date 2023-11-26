@@ -31,7 +31,7 @@ input type:touchpad {
 }
 
 input type:pointer {
-    natural_scroll enabled
+    natural_scroll disabled
 }
 
 # preffered terminal emulator
@@ -61,3 +61,7 @@ include ~/.config/sway/workspace_config
 # include local config, if it exists
 include ~/.sway.local
 
+# set waybar
+bar {
+    swaybar_command waybar
+}

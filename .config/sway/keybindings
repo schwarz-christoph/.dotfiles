@@ -14,9 +14,8 @@ bindsym $mod+d exec $menu
 # common apps keybinds
 bindsym Print exec $ScreenshotGrabber
 bindsym $mod+Ctrl+f exec firefox
-bindsym $mod+Ctrl+c exec google-chrome --enable-features=VaapiVideoDecoder
 bindsym $mod+Ctrl+b exec brave-browser --enable-features=VaapiVideoDecoder
-bindsym $mod+Ctrl+p exec thunderbird
+bindsym $mod+Ctrl+m exec blue-mail
 
 # Lock, shutdown etc.
 bindsym $mod+l exec --no-startup-id $Locker, mode "default"
@@ -34,6 +33,7 @@ mode "$mode_system" {
 }
 
 bindsym $mod+p mode "$mode_system"
+
 
 #change volume
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
