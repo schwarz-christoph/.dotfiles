@@ -111,8 +111,8 @@ path = "{{ home_dir }}/.config/fontconfig/fonts.conf"
 type = "file"
 state= "link"
 force = true
-src = "{{ home_dir }}/.dotfiles/.config/rofi/config.rasi"
-path = "{{ home_dir }}/.config/rofi/config.rasi"
+src = "{{ home_dir }}/.dotfiles/.config/rofi"
+path = "{{ home_dir }}/.config/rofi"
 
 [[jobs]]
 type = "file"
@@ -135,12 +135,12 @@ path = "{{ home_dir }}/.config/swaylock/config"
 #src = "{{ home_dir }}/.dotfiles/.config/systemd/user/dunst.service"
 #path = "{{ home_dir }}/.config/systemd/user/dunst.service"
 
-#[[jobs]]
-#type = "file"
-#state= "link"
-#force = true
-#src = "{{ home_dir }}/.dotfiles/.config/systemd/user/kanshi.service"
-#path = "{{ home_dir }}/.config/systemd/user/kanshi.service"
+[[jobs]]
+type = "file"
+state= "link"
+force = true
+src = "{{ home_dir }}/.dotfiles/.config/systemd/user/kanshi.service"
+path = "{{ home_dir }}/.config/systemd/user/kanshi.service"
 
 #[[jobs]]
 #type = "file"
@@ -204,6 +204,20 @@ state= "link"
 force = true
 src = "{{ home_dir }}/.dotfiles/.config/xdg-desktop-portal-wlr/config"
 path = "{{ home_dir }}/.config/xdg-desktop-portal-wlr/config"
+
+[[jobs]]
+type = "file"
+state= "link"
+force = true
+src = "{{ home_dir }}/.dotfiles/.config/waybar"
+path = "{{ home_dir }}/.config/waybar"
+
+[[jobs]]
+type = "file"
+state= "link"
+force = true
+src = "{{ home_dir }}/.dotfiles/.config/tmuxinator"
+path = "{{ home_dir }}/.config/tmuxinator"
 
 #[[jobs]]
 #type = "file"

@@ -131,3 +131,7 @@ else
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
