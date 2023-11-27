@@ -1,55 +1,55 @@
 ## Everything in ~/\.config/
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/alacritty/alacritty.yml"
-path = "{{ home_dir }}/.config/alacritty/alacritty.yml"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/alacritty/alacritty.yml"
+#path = "{{ home_dir }}/.config/alacritty/alacritty.yml"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/atuin/config.toml"
-path = "{{ home_dir }}/.config/atuin/config.toml"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/atuin/config.toml"
+#path = "{{ home_dir }}/.config/atuin/config.toml"
 
-[[jobs]]
-type = "command"
-chdir = "{{ home_dir }}/.dotfiles/.config/btop"
-command = "bash"
-argv = [
-  "-c",
-  'mkdir -p ~/.config/btop && cp btop.conf ~/.config/btop'
-]
+#[[jobs]]
+#type = "command"
+#chdir = "{{ home_dir }}/.dotfiles/.config/btop"
+#command = "bash"
+#argv = [
+#  "-c",
+#  'mkdir -p ~/.config/btop && cp btop.conf ~/.config/btop'
+#]
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/containers/registries.conf"
-path = "{{ home_dir }}/.config/containers/registries.conf"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/containers/registries.conf"
+#path = "{{ home_dir }}/.config/containers/registries.conf"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/ctags/config.conf"
-path = "{{ home_dir }}/.config/ctags/config.conf"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/ctags/config.conf"
+#path = "{{ home_dir }}/.config/ctags/config.conf"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/dunst/dunstrc"
-path = "{{ home_dir }}/.config/dunst/dunstrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/dunst/dunstrc"
+#path = "{{ home_dir }}/.config/dunst/dunstrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/fd/ignore"
-path = "{{ home_dir }}/.config/fd/ignore"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/fd/ignore"
+#path = "{{ home_dir }}/.config/fd/ignore"
 
 [[jobs]]
 type = "file"
@@ -58,54 +58,54 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.config/fontconfig/fonts.conf"
 path = "{{ home_dir }}/.config/fontconfig/fonts.conf"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/foot/foot.ini"
-path = "{{ home_dir }}/.config/foot/foot.ini"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/foot/foot.ini"
+#path = "{{ home_dir }}/.config/foot/foot.ini"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/i3status-rust/config.toml"
-path = "{{ home_dir }}/.config/i3status-rust/config.toml"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/i3status-rust/config.toml"
+#path = "{{ home_dir }}/.config/i3status-rust/config.toml"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/nvim/init.vim"
-path = "{{ home_dir }}/.config/nvim/init.vim"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/nvim/init.vim"
+#path = "{{ home_dir }}/.config/nvim/init.vim"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/nvim/coc-settings.json"
-path = "{{ home_dir }}/.config/nvim/coc-settings.json"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/nvim/coc-settings.json"
+#path = "{{ home_dir }}/.config/nvim/coc-settings.json"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/ranger/rc.conf"
-path = "{{ home_dir }}/.config/ranger/rc.conf"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/ranger/rc.conf"
+#path = "{{ home_dir }}/.config/ranger/rc.conf"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/ranger/commands.py"
-path = "{{ home_dir }}/.config/ranger/commands.py"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/ranger/commands.py"
+#path = "{{ home_dir }}/.config/ranger/commands.py"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/ranger/plugins/"
-path = "{{ home_dir }}/.config/ranger/plugins"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/ranger/plugins/"
+#path = "{{ home_dir }}/.config/ranger/plugins"
 
 [[jobs]]
 type = "file"
@@ -128,26 +128,26 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.config/swaylock/config"
 path = "{{ home_dir }}/.config/swaylock/config"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/systemd/user/dunst.service"
-path = "{{ home_dir }}/.config/systemd/user/dunst.service"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/systemd/user/dunst.service"
+#path = "{{ home_dir }}/.config/systemd/user/dunst.service"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/systemd/user/kanshi.service"
-path = "{{ home_dir }}/.config/systemd/user/kanshi.service"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/systemd/user/kanshi.service"
+#path = "{{ home_dir }}/.config/systemd/user/kanshi.service"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/systemd/user/udiskie.service"
-path = "{{ home_dir }}/.config/systemd/user/udiskie.service"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/systemd/user/udiskie.service"
+#path = "{{ home_dir }}/.config/systemd/user/udiskie.service"
 
 [[jobs]]
 type = "file"
@@ -205,53 +205,53 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.config/xdg-desktop-portal-wlr/config"
 path = "{{ home_dir }}/.config/xdg-desktop-portal-wlr/config"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.config/electron-flags.conf"
-path = "{{ home_dir }}/.config/electron-flags.conf"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.config/electron-flags.conf"
+#path = "{{ home_dir }}/.config/electron-flags.conf"
 
 
 ## Random configuration in ~/\..*/
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.voltron/config"
-path = "{{ home_dir }}/.voltron/config"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.voltron/config"
+#path = "{{ home_dir }}/.voltron/config"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.aws/cli/alias"
-path = "{{ home_dir }}/.aws/cli/alias"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.aws/cli/alias"
+#path = "{{ home_dir }}/.aws/cli/alias"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.gnupg/gpg-agent.conf"
-path = "{{ home_dir }}/.gnupg/gpg-agent.conf"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.gnupg/gpg-agent.conf"
+#path = "{{ home_dir }}/.gnupg/gpg-agent.conf"
 
 
 ## Everything in ~/
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.ackrc"
-path = "{{ home_dir }}/.ackrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.ackrc"
+#path = "{{ home_dir }}/.ackrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.agignore"
-path = "{{ home_dir }}/.agignore"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.agignore"
+#path = "{{ home_dir }}/.agignore"
 
 [[jobs]]
 type = "file"
@@ -260,26 +260,26 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.bashrc"
 path = "{{ home_dir }}/.bashrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.clang-format"
-path = "{{ home_dir }}/.clang-format"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.clang-format"
+#path = "{{ home_dir }}/.clang-format"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.gdbinit"
-path = "{{ home_dir }}/.gdbinit"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.gdbinit"
+#path = "{{ home_dir }}/.gdbinit"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.gemrc"
-path = "{{ home_dir }}/.gemrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.gemrc"
+#path = "{{ home_dir }}/.gemrc"
 
 [[jobs]]
 type = "file"
@@ -295,33 +295,33 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.gitignore_global"
 path = "{{ home_dir }}/.gitignore_global"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.gtkrc-2.0"
-path = "{{ home_dir }}/.gtkrc-2.0"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.gtkrc-2.0"
+#path = "{{ home_dir }}/.gtkrc-2.0"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.java-format.xml"
-path = "{{ home_dir }}/.java-format.xml"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.java-format.xml"
+#path = "{{ home_dir }}/.java-format.xml"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.lldbinit"
-path = "{{ home_dir }}/.lldbinit"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.lldbinit"
+#path = "{{ home_dir }}/.lldbinit"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.npmrc"
-path = "{{ home_dir }}/.npmrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.npmrc"
+#path = "{{ home_dir }}/.npmrc"
 
 [[jobs]]
 type = "file"
@@ -337,19 +337,19 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.profile"
 path = "{{ home_dir }}/.profile"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.pylintrc"
-path = "{{ home_dir }}/.pylintrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.pylintrc"
+#path = "{{ home_dir }}/.pylintrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.ripgreprc"
-path = "{{ home_dir }}/.ripgreprc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.ripgreprc"
+#path = "{{ home_dir }}/.ripgreprc"
 
 [[jobs]]
 type = "file"
@@ -358,40 +358,40 @@ force = true
 src = "{{ home_dir }}/.dotfiles/.tmux.conf"
 path = "{{ home_dir }}/.tmux.conf"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.vimrc"
-path = "{{ home_dir }}/.vimrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.vimrc"
+#path = "{{ home_dir }}/.vimrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.Xdefaults"
-path = "{{ home_dir }}/.Xdefaults"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.Xdefaults"
+#path = "{{ home_dir }}/.Xdefaults"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.xinitrc"
-path = "{{ home_dir }}/.xinitrc"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.xinitrc"
+#path = "{{ home_dir }}/.xinitrc"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.xprofile"
-path = "{{ home_dir }}/.xprofile"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.xprofile"
+#path = "{{ home_dir }}/.xprofile"
 
-[[jobs]]
-type = "file"
-state= "link"
-force = true
-src = "{{ home_dir }}/.dotfiles/.xsettingsd"
-path = "{{ home_dir }}/.xsettingsd"
+#[[jobs]]
+#type = "file"
+#state= "link"
+#force = true
+#src = "{{ home_dir }}/.dotfiles/.xsettingsd"
+#path = "{{ home_dir }}/.xsettingsd"
 
 [[jobs]]
 type = "file"

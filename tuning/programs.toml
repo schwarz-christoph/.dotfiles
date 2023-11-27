@@ -1,45 +1,45 @@
-[[jobs]]
-name = "install tpm"
-type = "git"
-clone = true
-dest = "{{ home_dir }}/.tmux/plugins/tpm"
-repo = "https://github.com/tmux-plugins/tpm"
+#[[jobs]]
+#name = "install tpm"
+#type = "git"
+#clone = true
+#dest = "{{ home_dir }}/.tmux/plugins/tpm"
+#repo = "https://github.com/tmux-plugins/tpm"
 
 
-[[jobs]]
-name = "i3status-rust: repository"
-type = "git"
-clone = true
-dest = "{{ home_dir }}/workspace/other/i3status-rust"
-repo = "https://github.com/greshake/i3status-rust.git"
+#[[jobs]]
+#name = "i3status-rust: repository"
+#type = "git"
+#clone = true
+#dest = "{{ home_dir }}/workspace/other/i3status-rust"
+#repo = "https://github.com/greshake/i3status-rust.git"
 
-[[jobs]]
-name = "i3status-rust: install"
-needs = ["i3status-rust: repository"]
-type = "command"
-chdir = "{{ home_dir }}/workspace/other/i3status-rust"
-command = "cargo"
-argv = ["install", "--path", ".", "--locked"]
+#[[jobs]]
+#name = "i3status-rust: install"
+#needs = ["i3status-rust: repository"]
+#type = "command"
+#chdir = "{{ home_dir }}/workspace/other/i3status-rust"
+#command = "cargo"
+#argv = ["install", "--path", ".", "--locked"]
 
 
-[[jobs]]
-name = "dragon: repository"
-type = "git"
-clone = true
-dest = "{{ home_dir }}/workspace/other/dragon"
-repo = "https://github.com/mwh/dragon.git"
+#[[jobs]]
+#name = "dragon: repository"
+#type = "git"
+#clone = true
+#dest = "{{ home_dir }}/workspace/other/dragon"
+#repo = "https://github.com/mwh/dragon.git"
 
-[[jobs]]
-name = "dragon: install"
-needs = ["dragon: repository"]
-type = "command"
-chdir = "{{ home_dir }}/workspace/other/dragon"
-command = "bash"
-argv = [
-  "-c",
-  'make && make install'
-]
-when = "{{ not has_executable(exe='dragon') }}"
+#[[jobs]]
+#name = "dragon: install"
+#needs = ["dragon: repository"]
+#type = "command"
+#chdir = "{{ home_dir }}/workspace/other/dragon"
+#command = "bash"
+#argv = [
+#  "-c",
+#  'make && make install'
+#]
+#when = "{{ not has_executable(exe='dragon') }}"
 
 
 [[jobs]]
@@ -77,59 +77,59 @@ packages = [
 state = "latest"
 
 
-[[jobs]]
-name = "install npm dependencies"
-type = "installernpm"
-packages = [
-  "yarn",
-  "neovim",
-  "rimraf",
-  "copy",
-  "concurrently",
-  "libcipm",
-  "esparse",
-  "normalize-package-data",
-  "js-yaml",
-  "mkdirp",
-  "init-package-json",
-  "http-signature",
-  "lstat",
-  "which",
-  "cross-spawn",
-  "libnpmpublish",
-  "node-gyp",
-  "dockerfile-language-server-nodejs",
-  "typescript",
-  "typescript-language-server",
-  "yaml-language-server",
-  "vscode-languageserver",
-  "bash-language-server",
-  "prettier",
-  "shellcheck"
-]
-state = "present"
+#[[jobs]]
+#name = "install npm dependencies"
+#type = "installernpm"
+#packages = [
+#  "yarn",
+#  "neovim",
+#  "rimraf",
+#  "copy",
+#  "concurrently",
+#  "libcipm",
+#  "esparse",
+#  "normalize-package-data",
+#  "js-yaml",
+#  "mkdirp",
+#  "init-package-json",
+#  "http-signature",
+#  "lstat",
+#  "which",
+#  "cross-spawn",
+#  "libnpmpublish",
+#  "node-gyp",
+#  "dockerfile-language-server-nodejs",
+#  "typescript",
+#  "typescript-language-server",
+#  "yaml-language-server",
+#  "vscode-languageserver",
+#  "bash-language-server",
+#  "prettier",
+#  "shellcheck"
+#]
+#state = "present"
 
 
-[[jobs]]
-name = "install python dependencies"
-type = "command"
-command = "pip3"
-argv = [
-  "install",
-  "--user",
-  "--upgrade",
-  "poetry",
-  "thefuck",
-  "pylint",
-  "flake8",
-  "pyright",
-  "pynvim",
-  "black",
-  "jedi-language-server",
-  "bandit",
-  "cfn-lint"
-]
-state = "present"
+#[[jobs]]
+#name = "install python dependencies"
+#type = "command"
+#command = "pip3"
+#argv = [
+#  "install",
+#  "--user",
+#  "--upgrade",
+#  "poetry",
+#  "thefuck",
+#  "pylint",
+#  "flake8",
+#  "pyright",
+#  "pynvim",
+#  "black",
+#  "jedi-language-server",
+#  "bandit",
+#  "cfn-lint"
+#]
+#state = "present"
 
 
 [[jobs]]
@@ -145,23 +145,23 @@ crates = [
 state = "present"
 
 
-[[jobs]]
-name = "install aws cli v2"
-type = "command"
-command = "bash"
-argv = [
-  "-c",
-  '''\
-  mkdir -p ~/Downloads/awscli \
-  && cd ~/Downloads/awscli \
-  && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-  && unzip awscliv2.zip \
-  && ./aws/install -i ~/.local/aws-cli -b ~/.local/bin --update \
-  && cd \
-  && rm -rf ~/Downloads/awscli \
-  '''
-]
-when = "{{ not has_executable(exe='aws') }}"
+#[[jobs]]
+#name = "install aws cli v2"
+#type = "command"
+#command = "bash"
+#argv = [
+#  "-c",
+#  '''\
+#  mkdir -p ~/Downloads/awscli \
+#  && cd ~/Downloads/awscli \
+#  && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+#  && unzip awscliv2.zip \
+#  && ./aws/install -i ~/.local/aws-cli -b ~/.local/bin --update \
+#  && cd \
+#  && rm -rf ~/Downloads/awscli \
+#  '''
+#]
+#when = "{{ not has_executable(exe='aws') }}"
 
 
 [[jobs]]

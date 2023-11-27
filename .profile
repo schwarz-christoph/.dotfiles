@@ -24,6 +24,9 @@ PATH="$HOME/.gem/ruby/current/bin:$PATH"
 PATH="$HOME/.luarocks/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 
+# Rust 
+PATH="$HOME/.cargo/bin:$PATH"
+
 # set up go as needed. GOPRIVATE is set up together with .gitconfig
 PATH=$PATH:~/go/bin
 export GOPATH=~/go
