@@ -3,6 +3,7 @@ echo "Install:"
 echo "  - sway"
 echo "  - swaylock"
 echo "  - waybar"
+echo "  - rofi"
 echo "  - tmux"
 echo "  - zsh"
 echo "  - xdg-desktop-portal-wlr"
@@ -70,3 +71,7 @@ if  [ -d "$HOME/.config/Rofi" ] ; then
     rm $HOME/.config/rofi
 fi
 ln -s $HOME/.dotfiles/.config/rofi $HOME/.config/
+
+if ! [ -d "$HOME/.local/share/fonts/FiraCode" ] ; then
+    ln -s $HOME/.dotfiles/fonts/FiraCode $HOME/.local/share/fonts
+fi
