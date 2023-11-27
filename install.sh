@@ -73,7 +73,6 @@ fi
 ln -s $HOME/.dotfiles/.config/rofi $HOME/.config/
 
 if ! [ -d "$HOME/.local/share/fonts/FiraCode" ] ; then
-    [ -d "$HOME/.local/share/fonts" ] || mkdir -pv $HOME/.local/share/fonts
     ln -s $HOME/.dotfiles/fonts/FiraCode $HOME/.local/share/fonts
     fc-cache -fv
 
