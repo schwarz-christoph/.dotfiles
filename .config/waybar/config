@@ -1,7 +1,113 @@
-[
-  {
-    "include": [
-      "~/.config/waybar/bars/top.json",
+{
+    "layer": "top",
+    "height": 35,
+    "spacing": 5,
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces"
     ],
-  }
-]
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+	"tray",
+    	"disk",
+	"backlight",
+        "pulseaudio",
+        "network",
+        "battery",
+        "custom/power"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%H:%M   %a, %b %d}"
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{percent}% {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "on-scroll-down": "brightnessctl s 5%-",
+      "on-scroll-up": "brightnessctl s +5%",
+      "tooltip": false,
+      "smooth-scrolling-threshold": 1
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "disk": {
+        "interval": 300,
+        "format": "󰋊 {percentage_free}%",
+        "path": "/"
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": "󰖩 {essid}",
+        "format-disconnected": "睊",
+        "format-ethernet": "",
+        "on-click": "rofi-wifi-menu"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format": "󰤆",
+        "on-click": "$HOME/.config/rofi/scripts/powermenu_t3"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}
+// vim: ft=jsonc

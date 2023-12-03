@@ -1,184 +1,207 @@
-@import "./colors.css";
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
 
 * {
-  background: transparent;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 12px;
-  color: white;
-  margin: 0.5px 0px 0.5px 0.5px;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 13px;
 }
 
-#waybar {
-  background: alpha(shade(@foreground, 0.4), 0.1);
+window#waybar {
+    background-color: @crust;
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-#tray menu,
-tooltip {
-  background: @background;
-  color: @active;
-  border: 1px solid shade(@active, 0.6);
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
-#scroll,
-#clock,
-#hardware,
-#scripts,
-#custom-weather,
-#batteries,
-#workspaces,
-#tray {
-  background: alpha(@background, 0.8);
-  border-radius: 8px;
-  padding: 2px;
-  margin-right: 4px;
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
 
-  /* border: 1px solid alpha(shade(@active, 0.6),0.6); */
+window#waybar.termite {
+    background-color: #3F3F3F;
 }
 
-#tray {
-  padding: 0px 8px 0px 8px;
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+#workspaces button:hover {
+    background: @surface0;
+    border: @surface0;
 }
 
 #workspaces button {
-  padding: 0px;
-  border-radius: 50%;
-  color: shade(@background, 0.8);
+    padding: 0 8px;
+    color: @text;
+    border-radius: 15px;
+    margin: 5px 0 5px 5px;
 }
-#workspaces button.urgent {
-  text-decoration: underline;
-  font-weight: bold;
+
+#workspaces button.selected {
+    background-color: @text;
 }
+
 #workspaces button.active {
-  background: shade(alpha(@foreground, 0.2), 0.8);
-  color: shade(@foreground, 0.9);
-  border-radius: 8px;
+    background-color: @surface0;
 }
 
-#cpu,
+#workspaces button.urgent {
+    background-color: @red;
+    color: @crust;
+}
+
 #clock,
-#network,
-#custom-vpn,
-#custom-cputemp,
-#custom-colorpicker,
-#submap,
-#idle_inhibitor,
-#custom-updates,
-#gamemode,
-#custom-camera,
-#custom-notifications,
-#custom-recorder,
-#custom-batterysaver,
-#bluetooth,
-#disk,
+#battery,
+#cpu,
 #memory,
+#disk,
+#temperature,
+#backlight,
+#network,
 #pulseaudio,
-#pulseaudio.mic,
-#backlight {
-  padding: 0px 6px 0px 6px;
-}
-
-#custom-github {
-  padding-right: 6px;
-}
-
-/* subhighlight */
-#gamemode,
-#submap,
-#custom-recorder,
-#custom-vpn,
-#custom-github,
+#wireplumber,
+#custom-power,
 #custom-updates,
-#bluetooth.connected {
-  background: shade(alpha(@foreground, 0.1), 0.8);
-  border-radius: 8px;
-}
-
+#tray,
+#mode,
 #idle_inhibitor,
-#pulseaudio,
-#pulseaudio.mic {
-  color: #7aa2f7;
+#scratchpad,
+#backlight,
+#mpd {
+    padding: 0 12px;
+    background-color: @base;
+    color: @crust;
+    border-radius: 15px;
+    margin: 5px 0;
 }
 
-#backlight {
-  color: #fab387;
+#window,
+#workspaces {
+    margin: 0 4px;
 }
 
-#memory {
-  color: shade(#cca0e4, 0.8);
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#clock {
+  color: @text;
+}
+
+#custom-updates {
+  color: @red;
 }
 
 #disk {
-  color: shade(#7aa2f7, 0.8);
+    color: @peach;
 }
 
-#custom-recorder {
-  color: #d78787;
+#pulseaudio {
+  color: @yellow;
 }
 
-#cpu {
-  color: shade(#a6e3a1, 0.8);
-}
-
-#custom-batterysaver.powersave,
-#custom-batterysaver.power {
-  color: #a6e3a1;
-}
-#custom-batterysaver.default,
-#custom-batterysaver.normal {
-  color: #7aa2f7;
-}
-#custom-batterysaver.performance {
-  color: #d78787;
+#pulseaudio.muted {
+  color: @overlay1;
 }
 
 #network {
-  color: #a6e3a1;
+  color: @green;
 }
 
-#network.disabled,
 #network.disconnected {
-  color: #d78787;
-}
-@keyframes blink {
-  to {
-    background-color: alpha(red, 0.6);
-    color: @foreground;
-  }
-}
-@keyframes blink-blue {
-  to {
-    background-color: alpha(#7aa2f7, 0.6);
-    color: @foreground;
-  }
+  color: @overlay1;
 }
 
-#battery.warning:not(.charging),
-#battery.critical:not(.charging) {
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#battery {
+    color: @blue;
 }
 
-#bluetooth.discoverable,
-#bluetooth.discovering,
-#bluetooth.pairable {
-  animation-name: blink-blue;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#battery.warning:not(.charging) {
+    background-color: @red;
+    color: @crust;
 }
 
-/* Override */
+#custom-power {
+  color: @mauve;
+}
 
-#batteries {
-  margin-right: 0px;
-  border-radius: 8px 8px 8px 8px;
+#keyboard-state > label {
+    padding: 0 5px;
 }
-#clock {
-  margin-left: 0px;
-  border-radius: 8px 8px 8px 8px;
-  background: alpha(@background, 0.6);
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
 }
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#backlight {
+        color: @yellow
+}
+
+/* vim: ft=sass
+*/

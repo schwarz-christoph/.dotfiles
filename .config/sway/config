@@ -11,7 +11,9 @@ set $Locker swaylock
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
-set $menu rofi -show drun
+set $menu $HOME/.config/rofi/launchers/type-3/launcher.sh
+
+set $powermenu $HOME/.config/rofi/powermenu/type-3/powermenu.sh
 
 set $ScreenshotGrabber grim
 
