@@ -89,7 +89,7 @@ button {
     background-color: @text;
 }
 
-#workspaces button.active {
+#workspaces button.focused {
     background-color: @surface0;
 }
 
