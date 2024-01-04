@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Erhalte die Liste der angeschlossenen Ausgänge
-outputs=$(swaymsg -t get_outputs | jq -r '.[] | select(.active) | .name')
+outputs=$(swaymsg -t get_outputs | jq -r '.[] | .name')
 
 # Zähle die Anzahl der externen Bildschirme
 external_count=0

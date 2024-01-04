@@ -67,3 +67,7 @@ include ~/.sway.local
 bar {
     swaybar_command waybar
 }
+
+# start nextloud
+exec nextcloud
+
