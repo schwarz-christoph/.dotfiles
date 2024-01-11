@@ -11,8 +11,10 @@ bindsym $mod+Return exec $term
 # start menu
 bindsym $mod+d exec $menu
 
+# Screen Shot
+bindsym $mod+Print exec grimshot copy area
+
 # common apps keybinds
-bindsym Print exec $ScreenshotGrabber
 bindsym $mod+Ctrl+f exec firefox
 bindsym $mod+Ctrl+b exec brave-browser --enable-features=VaapiVideoDecoder
 bindsym $mod+Ctrl+m exec blue-mail
@@ -155,4 +157,3 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-

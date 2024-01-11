@@ -70,4 +70,6 @@ bar {
 
 # start nextloud
 exec nextcloud
-
+exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec modprobe v4l2loopback devices=1 max_buffers=2 exclusive_caps=1 card_label="VirtualCam"
+exec depmod
