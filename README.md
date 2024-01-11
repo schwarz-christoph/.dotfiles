@@ -48,4 +48,9 @@ sudo dnf install swaylock
 sudo dnf install waybar
 sudo dnf install rofi
 sudo dnf install polkit-gnome
+sudo dnf install grimshot
+
+- Virtual Camera OBS
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+sudo dnf install v4l2loopback kmod-v4l2loopback
 
