@@ -6,20 +6,20 @@
 #repo = "https://github.com/tmux-plugins/tpm"
 
 
-#[[jobs]]
-#name = "i3status-rust: repository"
-#type = "git"
-#clone = true
-#dest = "{{ home_dir }}/workspace/other/i3status-rust"
-#repo = "https://github.com/greshake/i3status-rust.git"
+[[jobs]]
+name = "i3status-rust: repository"
+type = "git"
+clone = true
+dest = "{{ home_dir }}/workspace/other/i3status-rust"
+repo = "https://github.com/greshake/i3status-rust.git"
 
-#[[jobs]]
-#name = "i3status-rust: install"
-#needs = ["i3status-rust: repository"]
-#type = "command"
-#chdir = "{{ home_dir }}/workspace/other/i3status-rust"
-#command = "cargo"
-#argv = ["install", "--path", ".", "--locked"]
+[[jobs]]
+name = "i3status-rust: install"
+needs = ["i3status-rust: repository"]
+type = "command"
+chdir = "{{ home_dir }}/workspace/other/i3status-rust"
+command = "cargo"
+argv = ["install", "--path", ".", "--locked"]
 
 
 #[[jobs]]
@@ -77,12 +77,12 @@ packages = [
 state = "latest"
 
 
-#[[jobs]]
-#name = "install npm dependencies"
-#type = "installernpm"
-#packages = [
+[[jobs]]
+name = "install npm dependencies"
+type = "installernpm"
+packages = [
 #  "yarn",
-#  "neovim",
+  "neovim",
 #  "rimraf",
 #  "copy",
 #  "concurrently",
@@ -106,30 +106,30 @@ state = "latest"
 #  "bash-language-server",
 #  "prettier",
 #  "shellcheck"
-#]
-#state = "present"
+]
+state = "present"
 
 
-#[[jobs]]
-#name = "install python dependencies"
-#type = "command"
-#command = "pip3"
-#argv = [
-#  "install",
-#  "--user",
-#  "--upgrade",
+[[jobs]]
+name = "install python dependencies"
+type = "command"
+command = "pip3"
+argv = [
+  "install",
+  "--user",
+  "--upgrade",
 #  "poetry",
-#  "thefuck",
-#  "pylint",
+  "thefuck",
+  "pylint",
 #  "flake8",
-#  "pyright",
-#  "pynvim",
+  "pyright",
+  "pynvim",
 #  "black",
 #  "jedi-language-server",
 #  "bandit",
 #  "cfn-lint"
-#]
-#state = "present"
+]
+state = "present"
 
 
 [[jobs]]
@@ -143,7 +143,6 @@ crates = [
   "fd-find",
 ]
 state = "present"
-
 
 #[[jobs]]
 #name = "install aws cli v2"
