@@ -1,0 +1,111 @@
+---
+- name: Konfigurieren von Symlinks, Git-Repository aktualisieren und Programminstallation
+  hosts: localhost
+  become: yes
+  vars:
+    home_dir: "{{ ansible_env.HOME }}"
+    dotfiles_repo: "git@github.com:schwarz-christoph/.dotfiles.git"
+    dotfiles_dest: "{{ home_dir }}/.dotfiles"
+
+  tasks:
+    - name: Klonen/Aktualisieren des .dotfiles Git-Repository
+      git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ dotfiles_dest }}"
+        update: yes
+  tasks:
+    - name: Erstellen von Symlinks für Konfigurationsdateien
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.path }}"
+        state: link
+        force: yes
+      loop:
+        - { src: "{{ home_dir }}/.dotfiles/.config/dunst/dunstrc", path: "{{ home_dir }}/.config/dunst/dunstrc" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/fontconfig/fonts.conf", path: "{{ home_dir }}/.config/fontconfig/fonts.conf" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/i3status-rust/config.toml", path: "{{ home_dir }}/.config/i3status-rust/config.toml" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/ranger/rc.conf", path: "{{ home_dir }}/.config/ranger/rc.conf" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/ranger/commands.py", path: "{{ home_dir }}/.config/ranger/commands.py" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/ranger/plugins", path: "{{ home_dir }}/.config/ranger/plugins" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/rofi", path: "{{ home_dir }}/.config/rofi" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/sway/config", path: "{{ home_dir }}/.config/sway/config" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/swaylock/config", path: "{{ home_dir }}/.config/swaylock/config" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/systemd/user/dunst.service", path: "{{ home_dir }}/.config/systemd/user/dunst.service" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/systemd/user/kanshi.service", path: "{{ home_dir }}/.config/systemd/user/kanshi.service" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/systemd/user/swayidle.service", path: "{{ home_dir }}/.config/systemd/user/swayidle.service" }
+        - { src: "/dev/null", path: "{{ home_dir }}/.config/systemd/user/pipewire-session-manager.service" }
+        - { src: "/dev/null", path: "{{ home_dir }}/.config/systemd/user/pulseaudio.service" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/systemd/user/sway-session.target", path: "{{ home_dir }}/.config/systemd/user/sway-session.target" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/systemd/user/sway-session.target.wants", path: "{{ home_dir }}/.config/systemd/user/sway-session.target.wants" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/tmuxinator/lldb.yml", path: "{{ home_dir }}/.config/tmuxinator/lldb.yml" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/xdg-desktop-portal-wlr/config", path: "{{ home_dir }}/.config/xdg-desktop-portal-wlr/config" }
+        - { src: "{{ home_dir }}/.dotfiles/.config/waybar", path: "{{ home_dir }}/.config/waybar" }
+        - { src: "{{ home_dir }}/.dotfiles/.bashrc", path: "{{ home_dir }}/.bashrc" }
+        - { src: "{{ home_dir }}/.dotfiles/.gitconfig", path: "{{ home_dir }}/.gitconfig" }
+        - { src: "{{ home_dir }}/.dotfiles/.gitignore_global", path: "{{ home_dir }}/.gitignore_global" }
+        - { src: "{{ home_dir }}/.dotfiles/.p10k.zsh", path: "{{ home_dir }}/.p10k.zsh" }
+        - { src: "{{ home_dir }}/.dotfiles/.profile", path: "{{ home_dir }}/.profile" }
+        - { src: "{{ home_dir }}/.dotfiles/.tmux.conf", path: "{{ home_dir }}/.tmux.conf" }
+        - { src: "{{ home_dir }}/.dotfiles/.zshrc", path: "{{ home_dir }}/.zshrc" }
+
+    - name: Installieren von grundlegenden Programmen
+      dnf:
+        name: 
+          - tmux
+          - zsh
+          - sway
+          - swaylock
+          - swayidle
+          - waybar
+          - polkit-gnome
+          - grimshot
+          - v4l2loopback
+          - kmod-v4l2loopback
+          - ranger
+        state: present
+
+    - name: Hinzufügen des RPMFusion-Repository
+      dnf:
+        name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+        state: present
+
+    - name: Klonen und Installieren von Dunst
+      block:
+        - name: Klonen des Dunst-Repositories
+          git:
+            repo: https://github.com/dunst-project/dunst.git
+            dest: "{{ home_dir }}/Downloads/dunst"
+            clone: yes
+            update: yes
+
+        - name: Kompilieren von Dunst
+          make:
+            chdir: "{{ home_dir }}/Downloads/dunst"
+
+        - name: Installieren von Dunst
+          make:
+            chdir: "{{ home_dir }}/Downloads/dunst"
+            target: install
+
+        - name: Aufräumen nach der Installation
+          file:
+            path: "{{ home_dir }}/Downloads/dunst"
+            state: absent
+
+    - name: Klonen und Installieren von rofi-wayland
+      when: not has_executable(exe='rofi')
+      block:
+        - name: Klonen des rofi-wayland Repositories
+          git:
+            repo: 'https://github.com/lbonn/rofi.git'
+            dest: '{{ home_dir }}/workspace/other/rofi'
+            clone: yes
+            update: yes
+
+        - name: Installieren von rofi-wayland
+          shell: |
+            meson setup build --prefix ${HOME}/.local && cd build && ninja install
+          args:
+            chdir: '{{ home_dir }}/workspace/other/rofi'
+          become_user: '{{ ansible_env.USER }}'
+
