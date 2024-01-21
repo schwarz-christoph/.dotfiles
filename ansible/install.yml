@@ -1,18 +1,10 @@
 ---
-- name: Konfigurieren von Symlinks, Git-Repository aktualisieren und Programminstallation
+- name: Konfigurieren von Symlinks und Programminstallation
   hosts: localhost
   become: yes
   vars:
     home_dir: "{{ ansible_env.HOME }}"
-    dotfiles_repo: "git@github.com:schwarz-christoph/.dotfiles.git"
-    dotfiles_dest: "{{ home_dir }}/.dotfiles"
 
-  tasks:
-    - name: Klonen/Aktualisieren des .dotfiles Git-Repository
-      git:
-        repo: "{{ dotfiles_repo }}"
-        dest: "{{ dotfiles_dest }}"
-        update: yes
   tasks:
     - name: Erstellen von Symlinks für Konfigurationsdateien
       file:
