@@ -54,10 +54,12 @@
           loop: "{{ symlink_list }}"
     
     - name: Hinzufügen des RPMFusion-Repository
+      become: yes
       dnf:
         name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
         state: present
     - name: Reload DNF
+      become: yes
       dnf:
         name: "*"
         state: latest
