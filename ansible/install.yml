@@ -72,9 +72,15 @@
 
     - name: Hinzufügen des RPMFusion-Repository
       become: yes
-      dnf:
-        name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
-        state: present
+      block:
+        - name: Hinzufügen des RPMFusion-Repository
+          dnf:
+            name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+            state: present
+        - name: Reload DNF
+          dnf:
+            name: "*"
+            state: latest
 
     - name: Klonen und Installieren von Dunst
       block:
