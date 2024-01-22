@@ -53,6 +53,15 @@
             force: yes
           loop: "{{ symlink_list }}"
     
+    - name: Hinzufügen des RPMFusion-Repository
+      dnf:
+        name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+        state: present
+    - name: Reload DNF
+      dnf:
+        name: "*"
+        state: latest
+
     - name: Installieren von grundlegenden Programmen
       become: yes
       dnf:
@@ -69,18 +78,6 @@
           - kmod-v4l2loopback
           - ranger
         state: present
-
-    - name: Hinzufügen des RPMFusion-Repository
-      become: yes
-      block:
-        - name: Hinzufügen des RPMFusion-Repository
-          dnf:
-            name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
-            state: present
-        - name: Reload DNF
-          dnf:
-            name: "*"
-            state: latest
 
     - name: Klonen und Installieren von Dunst
       block:
