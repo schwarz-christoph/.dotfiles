@@ -65,8 +65,6 @@
           - waybar
           - polkit-gnome
           - grimshot
-          - v4l2loopback
-          - kmod-v4l2loopback
           - ranger
         state: present
 
