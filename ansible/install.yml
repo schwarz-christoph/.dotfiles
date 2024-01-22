@@ -57,6 +57,7 @@
       become: yes
       dnf:
         name: 
+          - make
           - tmux
           - zsh
           - sway
