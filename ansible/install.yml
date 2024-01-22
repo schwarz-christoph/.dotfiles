@@ -1,18 +1,11 @@
 ---
-- name: Konfigurieren von Symlinks und Programminstallation
+- name: Konfigurieren von Symlinks, Git-Repository aktualisieren und Programminstallation
   hosts: localhost
-  become: yes
   vars:
     home_dir: "{{ ansible_env.HOME }}"
-
-  tasks:
-    - name: Erstellen von Symlinks für Konfigurationsdateien
-      file:
-        src: "{{ item.src }}"
-        dest: "{{ item.path }}"
-        state: link
-        force: yes
-      loop:
+    dotfiles_repo: "git@github.com:schwarz-christoph/.dotfiles.git"
+    dotfiles_dest: "{{ home_dir }}/.dotfiles"
+    symlink_list:        
         - { src: "{{ home_dir }}/.dotfiles/.config/dunst/dunstrc", path: "{{ home_dir }}/.config/dunst/dunstrc" }
         - { src: "{{ home_dir }}/.dotfiles/.config/fontconfig/fonts.conf", path: "{{ home_dir }}/.config/fontconfig/fonts.conf" }
         - { src: "{{ home_dir }}/.dotfiles/.config/i3status-rust/config.toml", path: "{{ home_dir }}/.config/i3status-rust/config.toml" }
@@ -40,7 +33,28 @@
         - { src: "{{ home_dir }}/.dotfiles/.tmux.conf", path: "{{ home_dir }}/.tmux.conf" }
         - { src: "{{ home_dir }}/.dotfiles/.zshrc", path: "{{ home_dir }}/.zshrc" }
 
+
+  tasks:
+    - name: Erstellen von Symlinks für Konfigurationsdateien
+      become: yes
+      block:
+        - name: Stelle sicher, dass das Zielverzeichnis existiert
+          file:
+            path: "{{ item.path | dirname }}"
+            state: directory
+            mode: '0755'
+          loop: "{{ symlink_list }}"
+
+        - name: Erstelle Symlink
+          file:
+            src: "{{ item.src }}"
+            dest: "{{ item.path }}"
+            state: link
+            force: yes
+          loop: "{{ symlink_list }}"
+    
     - name: Installieren von grundlegenden Programmen
+      become: yes
       dnf:
         name: 
           - tmux
@@ -57,6 +71,7 @@
         state: present
 
     - name: Hinzufügen des RPMFusion-Repository
+      become: yes
       dnf:
         name: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
         state: present
@@ -75,6 +90,7 @@
             chdir: "{{ home_dir }}/Downloads/dunst"
 
         - name: Installieren von Dunst
+          become: yes
           make:
             chdir: "{{ home_dir }}/Downloads/dunst"
             target: install
@@ -95,6 +111,7 @@
             update: yes
 
         - name: Installieren von rofi-wayland
+          become: yes
           shell: |
             meson setup build --prefix ${HOME}/.local && cd build && ninja install
           args:

@@ -18,7 +18,7 @@ fi
 
 # Ausführen des Ansible-Playbooks
 echo "Führe das Ansible-Playbook aus: $PLAYBOOK_PATH"
-ansible-playbook "$PLAYBOOK_PATH"
+ansible-playbook "$PLAYBOOK_PATH" --ask-become-pass
 
 if [ $? -ne 0 ]; then
     echo "Fehler bei der Ausführung des Ansible-Playbooks."
