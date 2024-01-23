@@ -58,7 +58,12 @@
       dnf:
         name: 
           - make
+          - npm
+          - go
+          - rust
+          - cargo
           - tmux
+          - vim
           - zsh
           - sway
           - swaylock
@@ -111,3 +116,44 @@
             chdir: '{{ home_dir }}/workspace/other/rofi'
           become_user: '{{ ansible_env.USER }}'
 
+    - name: Install go dependencies
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - mvdan.cc/sh/v3/cmd/shfmt
+        - gitlab.com/gitlab-org/cli/cmd/glab
+        - github.com/Gelio/go-global-update
+        - mvdan.cc/sh/v3/cmd/shfmt
+        - golang.org/x/tools/gopls
+        - golang.org/x/lint/golint
+        - golang.org/x/tools/cmd/goimports
+
+    - name: Install npm dependencies
+      ansible.builtin.npm:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - neovim
+
+    - name: Install python dependencies
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+        extra_args: "--user --upgrade"
+      loop:
+        - thefuck
+        - pylint
+        - pyright
+        - pynvim
+
+    - name: Install rust dependencies
+      community.general.cargo:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - atuin
+        - cargo-updater
+        - git-delta
+        - ripgrep
+        - fd-find
