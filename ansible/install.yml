@@ -74,29 +74,29 @@
           - ranger
         state: present
 
-    - name: Klonen und Installieren von Dunst
-      block:
-        - name: Klonen des Dunst-Repositories
-          git:
-            repo: https://github.com/dunst-project/dunst.git
-            dest: "{{ home_dir }}/Downloads/dunst"
-            clone: yes
-            update: yes
-
-        - name: Kompilieren von Dunst
-          make:
-            chdir: "{{ home_dir }}/Downloads/dunst"
-
-        - name: Installieren von Dunst
-          become: yes
-          make:
-            chdir: "{{ home_dir }}/Downloads/dunst"
-            target: install
-
-        - name: Aufräumen nach der Installation
-          file:
-            path: "{{ home_dir }}/Downloads/dunst"
-            state: absent
+#    - name: Klonen und Installieren von Dunst
+#      block:
+#        - name: Klonen des Dunst-Repositories
+#          git:
+#            repo: https://github.com/dunst-project/dunst.git
+#            dest: "{{ home_dir }}/Downloads/dunst"
+#            clone: yes
+#            update: yes
+#
+#        - name: Kompilieren von Dunst
+#          make:
+#            chdir: "{{ home_dir }}/Downloads/dunst"
+#
+#        - name: Installieren von Dunst
+#          become: yes
+#          make:
+#            chdir: "{{ home_dir }}/Downloads/dunst"
+#            target: install
+#
+#        - name: Aufräumen nach der Installation
+#          file:
+#            path: "{{ home_dir }}/Downloads/dunst"
+#            state: absent
 
     - name: Klonen und Installieren von rofi-wayland
       when: not has_executable(exe='rofi')
