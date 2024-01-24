@@ -99,14 +99,19 @@
 #            state: absent
 
     - name: Klonen und Installieren von rofi-wayland
-      when: not has_executable(exe='rofi')
       block:
+        - name: Überprüfen, ob rofi installiert ist
+          command: which rofi
+          register: rofi_installed
+          failed_when: rofi_installed.rc == 0
+          changed_when: false
+          ignore_errors: yes
+
         - name: Klonen des rofi-wayland Repositories
           git:
             repo: 'https://github.com/lbonn/rofi.git'
             dest: '{{ home_dir }}/workspace/other/rofi'
-            clone: yes
-            update: yes
+          when: rofi_installed is failed
 
         - name: Installieren von rofi-wayland
           become: yes
@@ -114,7 +119,7 @@
             meson setup build --prefix ${HOME}/.local && cd build && ninja install
           args:
             chdir: '{{ home_dir }}/workspace/other/rofi'
-          become_user: '{{ ansible_env.USER }}'
+          when: rofi_installed is failed
 
     - name: Install go dependencies
       ansible.builtin.package:
