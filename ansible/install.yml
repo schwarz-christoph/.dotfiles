@@ -41,6 +41,7 @@
         dest: "{{dotfiles_dest}}"
         recursive: yes
         track_submodules: yes
+        update: yes  
     
     - name: Erstellen von Symlinks für Konfigurationsdateien
       become: yes
