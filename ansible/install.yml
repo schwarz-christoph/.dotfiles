@@ -72,15 +72,11 @@
           - polkit-gnome
           - grimshot
           - ranger
+          - libsecret-devel
         state: present
 
     - name: "Install Git Credentials Helper"
       block:
-        - name: Install libsecret-1-dev
-          apt:
-            name: libsecret-1-dev
-            state: present
-
         - name: Copy libsecret directory
           command: cp -r /usr/share/doc/git/contrib/credential/libsecret ./libsecret
 
