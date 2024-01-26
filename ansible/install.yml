@@ -35,6 +35,13 @@
 
 
   tasks:
+    - name: Klonen eines Git-Repositories mit Submodulen
+      git:
+        repo: "{{dotfiles_repo}}"
+        dest: "{{dotfiles_dest}}"
+        recursive: yes
+        track_submodules: yes
+    
     - name: Erstellen von Symlinks für Konfigurationsdateien
       become: yes
       block:
@@ -75,21 +82,21 @@
           - libsecret-devel
         state: present
 
-    - name: "Install Git Credentials Helper"
-      block:
-        - name: Copy libsecret directory
-          command: cp -r /usr/share/doc/git/contrib/credential/libsecret ./libsecret
-
-        - name: Change directory to libsecret and make
-          command: make
-          args:
-            chdir: ./libsecret
-
-        - name: Copy git-credential-libsecret to /usr/local/bin
-          become: yes
-          command: cp git-credential-libsecret /usr/local/bin
-          args:
-            chdir: ./libsecret
+#    - name: "Install Git Credentials Helper"
+#      block:
+#        - name: Copy libsecret directory
+#          command: cp -r /usr/share/doc/git/contrib/credential/libsecret ./libsecret
+#
+#        - name: Change directory to libsecret and make
+#          command: make
+#          args:
+#            chdir: ./libsecret
+#
+#        - name: Copy git-credential-libsecret to /usr/local/bin
+#          become: yes
+#         command: cp git-credential-libsecret /usr/local/bin
+#          args:
+#            chdir: ./libsecret
 
 #    - name: Klonen und Installieren von Dunst
 #      block:
@@ -140,7 +147,7 @@
     
     - name: Install go dependencies
       become: yes
-      shell: go get -u {{ item }}
+      shell: go install {{ item }}@latest
       loop:
         - mvdan.cc/sh/v3/cmd/shfmt
         - gitlab.com/gitlab-org/cli/cmd/glab
@@ -150,15 +157,14 @@
         - golang.org/x/tools/cmd/goimports
       environment:
         GOPATH: /path/to/your/gopath
-        GO111MODULE: on
 
-    - name: Install npm dependencies
-      become: yes
-      ansible.builtin.npm:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - neovim
+#    - name: Install npm dependencies
+#      become: yes
+#      ansible.builtin.npm:
+#        name: "{{ item }}"
+#        state: present
+#      loop:
+#        - neovim
 
     - name: Install python dependencies
       become: yes
@@ -183,3 +189,15 @@
         - git-delta
         - ripgrep
         - fd-find
+
+    - name: nerd-fonts: repository
+      git:
+        repo: "https://github.com/ryanoasis/nerd-fonts.git"
+        dest: "{{ home_dir }}/workspace/other/nerd-fonts"
+        depth: 1
+        clone: yes
+
+    - name: nerd-fonts: install
+      command: bash -c './install.sh'
+      args:
+        chdir: "{{ home_dir }}/workspace/other/nerd-fonts"
