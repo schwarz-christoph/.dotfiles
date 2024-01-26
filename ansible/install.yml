@@ -74,28 +74,26 @@
           - ranger
         state: present
 
-     - name: Install libsecret-1-dev and configure git-credential-libsecret
-       hosts: your_target_hosts # Replace with your target hosts
-       become: yes  # This is necessary for sudo commands
-       tasks:
-       - name: Install libsecret-1-dev
-         apt:
-           name: libsecret-1-dev
-           state: present
+    - name: "Install Git Credentials Helper"
+      block:
+        - name: Install libsecret-1-dev
+          apt:
+            name: libsecret-1-dev
+            state: present
 
-       - name: Copy libsecret directory
-         command: cp -r /usr/share/doc/git/contrib/credential/libsecret ./libsecret
+        - name: Copy libsecret directory
+          command: cp -r /usr/share/doc/git/contrib/credential/libsecret ./libsecret
 
-       - name: Change directory to libsecret and make
-         command: make
-         args:
-          chdir: ./libsecret
+        - name: Change directory to libsecret and make
+          command: make
+          args:
+            chdir: ./libsecret
 
-       - name: Copy git-credential-libsecret to /usr/local/bin
-         become: yes
-         command: cp git-credential-libsecret /usr/local/bin
-         args:
-           chdir: ./libsecret
+        - name: Copy git-credential-libsecret to /usr/local/bin
+          become: yes
+          command: cp git-credential-libsecret /usr/local/bin
+          args:
+            chdir: ./libsecret
 
 #    - name: Klonen und Installieren von Dunst
 #      block:
@@ -143,6 +141,7 @@
           args:
             chdir: '{{ home_dir }}/workspace/other/rofi'
           when: rofi_installed is failed
+    
     - name: Install go dependencies
       become: yes
       shell: go get -u {{ item }}
