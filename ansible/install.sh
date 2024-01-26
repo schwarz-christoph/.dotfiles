@@ -3,6 +3,8 @@
 # Definieren des Pfads zum Ansible-Playbook
 PLAYBOOK_PATH="./install.yml"
 
+git submodule update --recursive --init
+
 # Prüfen, ob Ansible installiert ist
 if ! command -v ansible > /dev/null; then
     echo "Ansible ist nicht installiert. Beginne mit der Installation..."

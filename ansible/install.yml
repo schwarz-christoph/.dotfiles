@@ -81,6 +81,7 @@
           - grimshot
           - ranger
           - libsecret-devel
+          - pip
         state: present
 
 #    - name: "Install Git Credentials Helper"
