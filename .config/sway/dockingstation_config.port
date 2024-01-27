@@ -1,0 +1,9 @@
+set $output-one DP-5
+set $output-two DP-6
+set $output-three DP-7
+
+# the last output is picked if detected
+workspace 1 output $output-one
+workspace 2 output $output-two
+workspace 3 output $output-three
+

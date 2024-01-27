@@ -58,7 +58,7 @@ include ~/.dotfiles/.config/sway/config_generic
 include ~/.dotfiles/.config/sway/keybindings
 
 # environment-specific worspace configuration
-include ~/.config/sway/workspace_config
+include ~/.dotfiles/.config/sway/dockingstation_config
 
 # include local config, if it exists
 include ~/.sway.local
