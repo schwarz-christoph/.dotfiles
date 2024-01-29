@@ -12,4 +12,6 @@ return {
   config = function ()
     require('neo-tree').setup {}
   end,
+  -- start filetree on vim startup
+  vim.cmd("autocmd VimEnter * NERDTree")
 }
