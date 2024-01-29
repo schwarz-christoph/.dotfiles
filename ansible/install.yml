@@ -32,17 +32,9 @@
         - { src: "{{ home_dir }}/.dotfiles/.profile", path: "{{ home_dir }}/.profile" }
         - { src: "{{ home_dir }}/.dotfiles/.tmux.conf", path: "{{ home_dir }}/.tmux.conf" }
         - { src: "{{ home_dir }}/.dotfiles/.zshrc", path: "{{ home_dir }}/.zshrc" }
-
+        - { src: "{{ home_dir }}/.dotfiles/.config/nvim", path: "{{ home_dir }}/.config/nvim" }
 
   tasks:
-    - name: Klonen eines Git-Repositories mit Submodulen
-      git:
-        repo: "{{dotfiles_repo}}"
-        dest: "{{dotfiles_dest}}"
-        recursive: yes
-        track_submodules: yes
-        update: yes  
-    
     - name: Erstellen von Symlinks für Konfigurationsdateien
       become: yes
       block:
@@ -71,7 +63,6 @@
           - rust
           - cargo
           - tmux
-          - vim
           - zsh
           - sway
           - swaylock
@@ -82,6 +73,7 @@
           - ranger
           - libsecret-devel
           - pip
+          - neovim
         state: present
 
 #    - name: "Install Git Credentials Helper"
@@ -160,14 +152,6 @@
       environment:
         GOPATH: /path/to/your/gopath
 
-#    - name: Install npm dependencies
-#      become: yes
-#      ansible.builtin.npm:
-#        name: "{{ item }}"
-#        state: present
-#      loop:
-#        - neovim
-
     - name: Install python dependencies
       become: yes
       ansible.builtin.pip:
@@ -192,14 +176,20 @@
         - ripgrep
         - fd-find
 
-    - name: nerd-fonts: repository
+    - name: "nerd-fonts: repository"
       git:
         repo: "https://github.com/ryanoasis/nerd-fonts.git"
         dest: "{{ home_dir }}/workspace/other/nerd-fonts"
         depth: 1
         clone: yes
 
-    - name: nerd-fonts: install
+    - name: "nerd-fonts: install"
       command: bash -c './install.sh'
       args:
         chdir: "{{ home_dir }}/workspace/other/nerd-fonts"
+    - name: Clone packer.nvim repository into the specified directory
+      git:
+        repo: 'https://github.com/wbthomason/packer.nvim'
+        dest: '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+        version: 'HEAD'
+        depth: 1
