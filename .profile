@@ -38,7 +38,7 @@ export ANDROID_HOME=~/.android-sdks
 PATH="$HOME/.npmpath/bin:$PATH"
 export NODE_PATH="$HOME/.npmpath/lib/node_modules"
 # Fix for   reason: 'unsupported',code: 'ERR_OSSL_EVP_UNSUPPORTED'
-export NODE_OPTIONS=--openssl-legacy-provider
+#export NODE_OPTIONS=--openssl-legacy-provider
 
 if [ -f "$HOME/.asdf/plugins/java/set-java-home.bash" ]; then
   . "$HOME/.asdf/plugins/java/set-java-home.bash"
@@ -165,43 +165,43 @@ if [ -f "$HOME/.profile.local" ]; then
 fi
 
 # sway is installed, simply assuming sway as session for now
-if command -v sway 1>/dev/null 2>&1; then
+#if command -v sway 1>/dev/null 2>&1; then
   # setting gdk_backend and qt_qpa_platform manually may cause trouble
   # export QT_QPA_PLATFORM=wayland
-  export GDK_BACKEND=wayland
-  export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-  export CLUTTER_BACKEND=wayland
-  export XDG_SESSION_TYPE=wayland
-  export XDG_SESSION_DESKTOP=sway
-  export XDG_CURRENT_DESKTOP=sway
-  export DESKTOP_SESSION=sway
-
-  export LIBSEAT_BACKEND=logind
-
-  export SDL_VIDEODRIVER=wayland
-  export MOZ_ENABLE_WAYLAND=1
-  export MOZ_WEBRENDER=1
-
-  export GTK_THEME=Solarized-Dark-Cyan-GTK
-
-  # Assume gnome-keyring is set up
-  export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/ssh"
-
-  # Fix Java AWT applications on wayland
-  export _JAVA_AWT_WM_NONREPARENTING=1
-
-  # Android studio breaks on sway if the shipped jdk is used for the UI
-  export STUDIO_JDK=/usr/lib/jvm/java-11-openjdk-amd64/
-
-  # Autostart sway on tty1
-  if [ "$(tty)" = "/dev/tty1" ]; then
-    if lshw -C display 2>/dev/null | grep -qi "vendor.*nvidia"; then
-      exec sway --unsupported-gpu
-    else
-      exec sway
-    fi
-  fi
-else
-  # Autostart x session (i3) on tty1
-  [ "$(tty)" = "/dev/tty1" ] && exec startx
-fi
+#  export GDK_BACKEND=wayland
+#  export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+#  export CLUTTER_BACKEND=wayland
+#  export XDG_SESSION_TYPE=wayland
+#  export XDG_SESSION_DESKTOP=sway
+#  export XDG_CURRENT_DESKTOP=sway
+#  export DESKTOP_SESSION=sway
+#
+#  export LIBSEAT_BACKEND=logind
+#
+#  export SDL_VIDEODRIVER=wayland
+#  export MOZ_ENABLE_WAYLAND=1
+#  export MOZ_WEBRENDER=1
+#
+#  export GTK_THEME=Solarized-Dark-Cyan-GTK
+#
+#  # Assume gnome-keyring is set up
+#  export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/ssh"
+#
+#  # Fix Java AWT applications on wayland
+#  export _JAVA_AWT_WM_NONREPARENTING=1
+#
+#  # Android studio breaks on sway if the shipped jdk is used for the UI
+#  export STUDIO_JDK=/usr/lib/jvm/java-11-openjdk-amd64/
+#fi
+#  # Autostart sway on tty1
+#  if [ "$(tty)" = "/dev/tty1" ]; then
+#    if lshw -C display 2>/dev/null | grep -qi "vendor.*nvidia"; then
+#      exec sway --unsupported-gpu
+#    else
+#      exec sway
+#    fi
+#  fi
+#else
+#  # Autostart x session (i3) on tty1
+#  [ "$(tty)" = "/dev/tty1" ] && exec startx
+#fi
