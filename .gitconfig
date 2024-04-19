@@ -33,7 +33,7 @@
 [color]
   ui = auto
 [credential]
-  helper = libsecret
+	helper = libsecret
 [status]
   submoduleSummary = true
 [pull]
@@ -62,4 +62,4 @@
   path = ~/.dotfiles/.gitconfig.github
 [user]
 	email = christoph.sw@icloud.com
-	name = Christoph Schwarz
+  name = Christoph Schwarz
