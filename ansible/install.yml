@@ -1,4 +1,3 @@
----
 - name: Konfigurieren von Symlinks, Git-Repository aktualisieren und Programminstallation
   hosts: localhost
   vars:
