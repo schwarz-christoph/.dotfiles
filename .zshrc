@@ -92,6 +92,10 @@ SHARE_HISTORY="true"
 
 # Manually installed plugins
 
+# Kubectl completions
+
+source ~/.dotfiles/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 source ~/.dotfiles/zsh-plugins/fzf-tab/fzf-tab.plugin.zsh
 
 source ~/.dotfiles/zsh-plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
