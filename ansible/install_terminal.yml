@@ -40,8 +40,11 @@
     - name: Installieren von grundlegenden Programmen
       become: yes
       dnf:
-        name: 
+        name:
+          - protobuf
+          - protobuf-devel
           - make
+          - xclip
           - npm
           - go
           - rust
@@ -72,7 +75,7 @@
         name: "{{ item }}"
         state: present
       loop:
-#        - atuin
+        - atuin
         - cargo-updater
         - git-delta
         - ripgrep
