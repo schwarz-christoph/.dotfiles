@@ -62,6 +62,7 @@
       become: yes
       shell: go install {{ item }}@latest
       loop:
+        - github.com/jesseduffield/lazygit@latest
         - mvdan.cc/sh/v3/cmd/shfmt
         - gitlab.com/gitlab-org/cli/cmd/glab
         - github.com/Gelio/go-global-update

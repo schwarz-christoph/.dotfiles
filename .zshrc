@@ -155,6 +155,11 @@ alias kubectl-show-ns='kubectl api-resources --verbs=list --namespaced -o name |
 # Funny fun:
 alias fucking='sudo '
 
+# Lazygit client
+if command -v lazygit 1> /dev/null 2>&1; then
+  alias gk='lazygit'
+fi
+
 # better ls
 if command -v exa 1>/dev/null 2>&1; then
   alias ls='exa'
