@@ -48,3 +48,9 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh-plugins/zsh-bat"]
+	path = zsh-plugins/zsh-bat
+	url = https://github.com/fdellwing/zsh-bat.git
+[submodule "zsh-plugins/you-should-use"]
+	path = zsh-plugins/you-should-use
+	url = https://github.com/MichaelAquilina/zsh-you-should-use.git
