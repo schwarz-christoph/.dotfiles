@@ -92,6 +92,10 @@ SHARE_HISTORY="true"
 
 # Manually installed plugins
 
+source ~/.dotfiles/zsh-plugins/zsh-bat/zsh-bat.plugin.zsh
+
+source ~/.dotfiles/zsh-plugins/you-should-use/zsh-you-should-use.plugin.zsh
+
 # Kubectl completions
 
 source ~/.dotfiles/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -153,6 +157,9 @@ alias fucking='sudo '
 
 # LS
 alias lsa='ls -lah'
+
+# better cat
+alias cat='bat'
 
 if command -v thefuck 1>/dev/null 2>&1; then
   eval $(thefuck --alias)
