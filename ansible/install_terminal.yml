@@ -46,6 +46,7 @@
           - make
           - xclip
           - npm
+          - exa
           - go
           - rust
           - bat
